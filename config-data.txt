@@ -1,0 +1,8 @@
+mongodb
+user: admin
+db name: dev
+pass: 6Nx5jAkXlKkQ
+
+oc login https://api.starter-ca-central-1.openshift.com
+oc project dngh
+oc status

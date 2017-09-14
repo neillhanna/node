@@ -1,0 +1,46 @@
+<div class="container" id="appDemo">
+    <div class="row col-md-12">
+        <div class="well well-lg row col-md-4">
+            <form data-ng-submit="createUser(formData)" class="form-group" id="createUsersForm">
+                <label for="firstname">Firstname </label>
+                <input type="text" data-ng-model="formData.firstname" id="firstname" name="firstname" class="form-control" placeholder="Firstname"/>
+                <label for="lastname">Lastname </label>
+                <input type="text" data-ng-model="formData.lastname" id="lastname" name="lastname" class="form-control" placeholder="Lastname"/>
+                <label for="email">email </label>
+                <input type="email" data-ng-model="formData.email" id="email" name="email" class="form-control" placeholder="Email"/><br />
+                <input type="submit" class="btn btn-default form-control" value="Add User" />
+            </form>
+        </div>
+
+        <div class="row col-md-8 table-responsive table-condensed" >
+            <table class="table table-hover">
+                <thead>
+                	<tr>
+                                <th>#</th>
+                		<th>Firstname</th>
+                		<th>Lastname</th>
+                		<th>Email</th>
+                		<th></th>
+                		<th></th>
+                	</tr>
+                </thead>
+                <tbody data-ng-repeat="x in userPage">
+                        <tr data-ng-hide="x.deleted">
+                            <th scope="row">{{ x.index }}</th>
+                            <td><span data-ng-hide="x.editing">{{ x.firstname }}</span><input type="text" data-ng-show="x.editing" data-ng-model="x.firstname" autofocus></td>
+                            <td><span data-ng-hide="x.editing">{{ x.lastname }}</span><input type="text" data-ng-show="x.editing" data-ng-model="x.lastname"></td>
+                            <td><span data-ng-hide="x.editing">{{ x.email }}</span><input type="text" data-ng-show="x.editing" data-ng-model="x.email"></td>
+                            <td><button class="btn btn-default edit-btn" data-ng-click="editUser(x)" data-ng-hide="x.editing" >Edit</button><button data-ng-show="x.editing" class="btn btn-warning save-btn" data-ng-click="updateUser(x)" >Save</button></td>
+                            <td><button class="btn btn-danger delete-btn" data-ng-click="deleteUser(x)">Delete</button></td>
+                        </tr>
+                </tbody>
+            </table>
+            
+                    <uib-pagination total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" data-ng-change="pageChanged()" num-pages="numPages" ></uib-pagination>
+                    
+        </div>
+        
+    </div>
+
+</div>
+ 
