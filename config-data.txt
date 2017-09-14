@@ -4,5 +4,5 @@ db name: dev
 pass: 6Nx5jAkXlKkQ
 
 oc login https://api.starter-ca-central-1.openshift.com
-oc project dngh
+oc project node
 oc status
